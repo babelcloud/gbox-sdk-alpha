@@ -51,6 +51,7 @@ main();
   - 点击
   - 滚动
   - 按键操作
+  - 获取设备屏幕尺寸
 
 ## API 参考
 
@@ -137,6 +138,16 @@ async keypress(key: string): Promise<AndroidResponse>
 - `key`: 要模拟的按键名称
 
 **返回值:** 返回操作结果对象。
+
+##### getDeviceScreenSize()
+
+获取设备屏幕尺寸。
+
+```typescript
+async getDeviceScreenSize(): Promise<[number, number]>
+```
+
+**返回值:** 返回设备屏幕尺寸。
 
 ## 开发
 

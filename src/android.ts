@@ -16,7 +16,7 @@ export default class AndroidGbox {
         this.sandboxId = null;
 
         const init = async (): Promise<AndroidGbox> => {
-            const { data } = await this.http.post('/api/v1/android/start');
+            const { data } = await this.http.post('/api/v1/gbox/android/create');
             this.sandboxId = data.sandboxId;
             return this;
         };
@@ -25,24 +25,37 @@ export default class AndroidGbox {
     }
 
     async screenshot(): Promise<string> {
-        const { data } = await this.http.post(`/api/v1/android/screenshot/${this.sandboxId}`);
+        const { data } = await this.http.post(`/api/v1/gbox/android/screenshot`, {
+            uid: this.sandboxId,
+        });
         return data.screenshot;
     }
 
     async click(x: number, y: number): Promise<AndroidResponse> {
-        const { data } = await this.http.post(`/api/v1/android/click/${this.sandboxId}`, { x, y });
+        const { data } = await this.http.post(`/api/v1/gbox/android/click`, { x, y, 
+            uid: this.sandboxId,
+         });
         return data;
     }
 
     async scroll(start: Point, end: Point): Promise<AndroidResponse> {
-        const [start_x, start_y] = start;
-        const [end_x, end_y] = end;
-        const { data } = await this.http.post(`/api/v1/android/scroll/${this.sandboxId}`, { start_x, start_y, end_x, end_y });
+        const [startX, startY] = start;
+        const [endX, endY] = end;
+        const { data } = await this.http.post(`/api/v1/gbox/android/scroll`, { startX, startY, endX, endY, uid: this.sandboxId });
         return data;
     }
 
     async keypress(key: string): Promise<AndroidResponse> {
-        const { data } = await this.http.post(`/api/v1/android/keypress/${this.sandboxId}`, { key });
+        const { data } = await this.http.post(`/api/v1/gbox/android/keyPress`, { key, 
+            uid: this.sandboxId,
+         });
+        return data;
+    }
+
+    async getDeviceScreenSize(): Promise<Point> {
+        const { data } = await this.http.post(`/api/v1/gbox/android/deviceScreenSize`, {
+            uid: this.sandboxId,
+        });
         return data;
     }
 } 
