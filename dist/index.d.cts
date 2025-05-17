@@ -22,10 +22,8 @@ interface GboxClientOptions {
 }
 declare class GboxClient {
     private http;
-    private androidSandboxId;
     constructor(options?: GboxClientOptions);
     initAndroid(): Promise<AndroidGbox>;
 }
-declare const gbox: GboxClient;
 
-export { GboxClient as default, gbox };
+export { GboxClient };

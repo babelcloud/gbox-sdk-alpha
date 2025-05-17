@@ -30,8 +30,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // index.ts
 var index_exports = {};
 __export(index_exports, {
-  default: () => GboxClient,
-  gbox: () => gbox
+  GboxClient: () => GboxClient
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -81,13 +80,12 @@ var AndroidGbox = class {
   }
 };
 
-// index.ts
+// src/client.ts
 var defaultBaseUrl = "https://gboxes.app";
 var defaultApiKey = process.env.GBOX_API_KEY;
 var envBaseUrl = process.env.GBOX_BASE_URL;
 var GboxClient = class {
   constructor(options = {}) {
-    this.androidSandboxId = null;
     const key = options.apiKey || defaultApiKey;
     if (!key) {
       throw new Error("GBOX_API_KEY is not set on environment variables");
@@ -100,9 +98,8 @@ var GboxClient = class {
     return android;
   }
 };
-var gbox = new GboxClient();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  gbox
+  GboxClient
 });
 //# sourceMappingURL=index.cjs.map

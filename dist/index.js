@@ -44,13 +44,12 @@ var AndroidGbox = class {
   }
 };
 
-// index.ts
+// src/client.ts
 var defaultBaseUrl = "https://gboxes.app";
 var defaultApiKey = process.env.GBOX_API_KEY;
 var envBaseUrl = process.env.GBOX_BASE_URL;
 var GboxClient = class {
   constructor(options = {}) {
-    this.androidSandboxId = null;
     const key = options.apiKey || defaultApiKey;
     if (!key) {
       throw new Error("GBOX_API_KEY is not set on environment variables");
@@ -63,9 +62,7 @@ var GboxClient = class {
     return android;
   }
 };
-var gbox = new GboxClient();
 export {
-  GboxClient as default,
-  gbox
+  GboxClient
 };
 //# sourceMappingURL=index.js.map

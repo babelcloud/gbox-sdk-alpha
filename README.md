@@ -13,33 +13,35 @@ npm install gbox-sdk
 ### ESM 导入
 
 ```typescript
-import GboxClient, { gbox } from 'gbox-sdk';
+import { GboxClient } from "gbox-sdk";
 
-// 使用默认实例
 async function main() {
+  const gbox = new GboxClient({
+    apiKey: 'gbox_1234567890',
+  });
+
   const android = await gbox.initAndroid();
-  const screenshot = await android.screenshot();
-  console.log(screenshot);
+  await android.click(100, 100);
 }
 
-// 或者创建自定义实例
-const customClient = new GboxClient({
-  apiKey: 'your-api-key',
-  baseUrl: 'https://your-gbox-instance.com'
-});
+main();
 ```
 
 ### CommonJS 导入
 
 ```javascript
-const { default: GboxClient, gbox } = require('gbox-sdk');
+const { GboxClient } = require("gbox-sdk");
 
-// 使用默认实例
 async function main() {
+  const gbox = new GboxClient({
+    apiKey: 'gbox_1234567890',
+  });
+
   const android = await gbox.initAndroid();
-  const screenshot = await android.screenshot();
-  console.log(screenshot);
+  await android.click(100, 100);
 }
+
+main();
 ```
 
 ## 功能
