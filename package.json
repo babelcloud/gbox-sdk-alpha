@@ -1,0 +1,24 @@
+{
+  "name": "gbox-sdk",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h8r-dev/gbox-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h8r-dev/gbox-sdk/issues"
+  },
+  "homepage": "https://github.com/h8r-dev/gbox-sdk#readme",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "lodash": "^4.17.21"
+  }
+}
