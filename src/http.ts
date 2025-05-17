@@ -1,9 +1,6 @@
+import axios, { AxiosInstance } from 'axios';
 
-
-
-import axios from 'axios';
-
-function getHttp(baseURL, apiKey) {
+function getHttp(baseURL: string, apiKey: string): AxiosInstance {
     const http = axios.create({
         baseURL: baseURL,
         headers: {
@@ -15,6 +12,4 @@ function getHttp(baseURL, apiKey) {
     return http;
 }
 
-
-
-export default getHttp;
+export default getHttp; 
