@@ -158,6 +158,22 @@ async keypress(key: string): Promise<AndroidResponse>
 
 **Returns:** Returns an operation result object.
 
+##### drag(options)
+
+Simulate a drag operation from start point to end point with specified duration.
+
+```typescript
+async drag(options: { start: [number, number], end: [number, number], duration: number }): Promise<AndroidResponse>
+```
+
+**Parameters:**
+- `options`: Configuration object
+  - `start`: Starting point coordinates `[x, y]`
+  - `end`: End point coordinates `[x, y]`
+  - `duration`: Duration of the drag operation in milliseconds
+
+**Returns:** Returns an operation result object.
+
 ##### getDeviceScreenSize()
 
 Get the device screen dimensions.
