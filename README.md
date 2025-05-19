@@ -27,7 +27,8 @@ const android = await gbox.initAndroid();
 await android.click(100, 100);
 
 // Returns screenshot as base64 encoded string
-await android.screenshot();
+const screenshot = await android.screenshot();
+console.log(screenshot)
 
 // You can save screenshot as PNG file
 
