@@ -1,163 +1,180 @@
 # GBox SDK
 
-GBox SDK 是一个用于与 GBox 服务交互的 TypeScript/JavaScript 客户端库。
+GBox SDK is a TypeScript/JavaScript client library for interacting with GBox services.
 
-## 安装
+## Installation
 
 ```bash
 npm install gbox-sdk
 ```
 
-## 使用方法
+## Usage
 
-### ESM 导入
+### ESM Import
 
 ```typescript
 import { GboxClient } from "gbox-sdk";
 
-async function main() {
-  const gbox = new GboxClient({
-    apiKey: 'gbox_1234567890',
-  });
 
-  const android = await gbox.initAndroid();
-  await android.click(100, 100);
-}
+const gbox = new GboxClient({
+  apiKey: 'your api key',
+});
 
-main();
+// Initialize Android box (default lifecycle: 5 minutes, will be automatically released after 5 minutes)
+const android = await gbox.initAndroid();
+
+// Click at specified X Y position
+await android.click(100, 100);
+
+// Returns screenshot as base64 encoded string
+await android.screenshot();
+
+// You can save screenshot as PNG file
+
+// import * as fs from 'fs';
+// const screenshot = await android.screenshot();
+// const base64Data = screenshot.replace(/^data:image\/png;base64,/, '');
+// fs.writeFileSync('screenshot.png', base64Data, 'base64');
+
+// Swipe from start_x: 100, start_y: 200 to end_x: 200, end_y: 300, duration 300ms
+await android.drag({ start: [100, 200], end: [200, 300], duration: 300 });
+
+// Input content, limitation: only supports English input
+await android.keypress("hello");
+
+// Get screen dimensions, returns width*height
+await android.getDeviceScreenSize()
+
 ```
 
-### CommonJS 导入
+### CommonJS Import
 
 ```javascript
 const { GboxClient } = require("gbox-sdk");
 
-async function main() {
-  const gbox = new GboxClient({
-    apiKey: 'gbox_1234567890',
-  });
+const gbox = new GboxClient({
+  apiKey: 'your api key',
+});
 
-  const android = await gbox.initAndroid();
-  await android.click(100, 100);
-}
+const android = await gbox.initAndroid();
+await android.click(100, 100);
 
-main();
 ```
 
-## 功能
+## Features
 
-- Android 沙箱环境
-  - 截图
-  - 点击
-  - 滚动
-  - 按键操作
-  - 获取设备屏幕尺寸
+- Android Sandbox Environment
+  - Screenshot
+  - Click
+  - Scroll
+  - Key Press Operations
+  - Get Device Screen Dimensions
 
-## API 参考
+## API Reference
 
 ### GboxClient
 
-`GboxClient` 是与 GBox 服务交互的主要客户端类。
+`GboxClient` is the main client class for interacting with GBox services.
 
-#### 构造函数
+#### Constructor
 
 ```typescript
 new GboxClient(options?: GboxClientOptions)
 ```
 
-**参数:**
-- `options` (可选): 配置对象
-  - `apiKey`: API 密钥，如果未提供则从环境变量 `GBOX_API_KEY` 获取
-  - `baseUrl`: 自定义 API 基础 URL，默认为 'https://gboxes.app'
+**Parameters:**
+- `options` (optional): Configuration object
+  - `apiKey`: API key, if not provided will be retrieved from environment variable `GBOX_API_KEY`
+  - `baseUrl`: Custom API base URL, defaults to 'https://gboxes.app'
 
-#### 方法
+#### Methods
 
 ##### initAndroid()
 
-初始化 Android 沙箱环境。
+Initialize the Android sandbox environment.
 
 ```typescript
 async initAndroid(): Promise<AndroidGbox>
 ```
 
-**返回值:** 返回 `AndroidGbox` 实例，用于与 Android 沙箱交互。
+**Returns:** Returns an `AndroidGbox` instance for interacting with the Android sandbox.
 
 ### AndroidGbox
 
-`AndroidGbox` 提供与 Android 沙箱环境交互的方法。
+`AndroidGbox` provides methods for interacting with the Android sandbox environment.
 
-#### 方法
+#### Methods
 
 ##### screenshot()
 
-获取当前 Android 屏幕截图。
+Get the current Android screen screenshot.
 
 ```typescript
 async screenshot(): Promise<string>
 ```
 
-**返回值:** 返回截图的 base64 编码字符串。
+**Returns:** Returns the screenshot as a base64 encoded string.
 
 ##### click(x, y)
 
-在指定坐标位置模拟点击操作。
+Simulate a click operation at the specified coordinates.
 
 ```typescript
 async click(x: number, y: number): Promise<AndroidResponse>
 ```
 
-**参数:**
-- `x`: 点击操作的 X 坐标（横坐标）
-- `y`: 点击操作的 Y 坐标（纵坐标）
+**Parameters:**
+- `x`: X coordinate (horizontal) for the click operation
+- `y`: Y coordinate (vertical) for the click operation
 
-**返回值:** 返回操作结果对象。
+**Returns:** Returns an operation result object.
 
 ##### scroll(start, end)
 
-模拟从起始点到终点的滚动操作。
+Simulate a scroll operation from start point to end point.
 
 ```typescript
 async scroll(start: [number, number], end: [number, number]): Promise<AndroidResponse>
 ```
 
-**参数:**
-- `start`: 起始点坐标 `[x, y]`
-- `end`: 终点坐标 `[x, y]`
+**Parameters:**
+- `start`: Starting point coordinates `[x, y]`
+- `end`: End point coordinates `[x, y]`
 
-**返回值:** 返回操作结果对象。
+**Returns:** Returns an operation result object.
 
 ##### keypress(key)
 
-模拟按键操作。
+Simulate a key press operation.
 
 ```typescript
 async keypress(key: string): Promise<AndroidResponse>
 ```
 
-**参数:**
-- `key`: 要模拟的按键名称
+**Parameters:**
+- `key`: Name of the key to simulate
 
-**返回值:** 返回操作结果对象。
+**Returns:** Returns an operation result object.
 
 ##### getDeviceScreenSize()
 
-获取设备屏幕尺寸。
+Get the device screen dimensions.
 
 ```typescript
 async getDeviceScreenSize(): Promise<[number, number]>
 ```
 
-**返回值:** 返回设备屏幕尺寸。
+**Returns:** Returns the device screen dimensions.
 
-## 开发
+## Development
 
 ```bash
-# 开发模式（监视文件变化）
+# Development mode (watch file changes)
 npm run dev
 
-# 构建
+# Build
 npm run build
 
-# 类型检查
+# Type checking
 npm run typecheck
 ```
