@@ -14,6 +14,7 @@ declare class AndroidGbox {
     click(x: number, y: number): Promise<AndroidResponse>;
     scroll(start: Point, end: Point): Promise<AndroidResponse>;
     keypress(key: string): Promise<AndroidResponse>;
+    type(text: string): Promise<AndroidResponse>;
     getDeviceScreenSize(): Promise<Point>;
     drag(start: Point, end: Point, duration: number): Promise<AndroidResponse>;
 }

@@ -100,6 +100,13 @@ var AndroidGbox = class {
     });
     return data;
   }
+  async type(text) {
+    const { data } = await this.http.post(`/api/v1/gbox/android/type`, {
+      text,
+      uid: this.sandboxId
+    });
+    return data;
+  }
   async getDeviceScreenSize() {
     const { data } = await this.http.post(`/api/v1/gbox/android/deviceScreenSize`, {
       uid: this.sandboxId
