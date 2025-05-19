@@ -55,6 +55,13 @@ export default class AndroidGbox {
         return data;
     }
 
+    async type(text: string): Promise<AndroidResponse> {
+        const { data } = await this.http.post(`/api/v1/gbox/android/type`, { text, 
+            uid: this.sandboxId,
+         });
+        return data;
+    }
+
     async getDeviceScreenSize(): Promise<Point> {
         const { data } = await this.http.post(`/api/v1/gbox/android/deviceScreenSize`, {
             uid: this.sandboxId,

@@ -158,6 +158,19 @@ async keypress(key: string): Promise<AndroidResponse>
 
 **Returns:** Returns an operation result object.
 
+##### type(text)
+
+Type text input.
+
+```typescript
+async type(text: string): Promise<AndroidResponse>
+```
+
+**Parameters:**
+- `text`: The text to input
+
+**Returns:** Returns an operation result object.
+
 ##### drag(options)
 
 Simulate a drag operation from start point to end point with specified duration.
