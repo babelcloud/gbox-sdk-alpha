@@ -30,7 +30,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // index.ts
 var index_exports = {};
 __export(index_exports, {
-  GboxClient: () => GboxClient
+  GboxClient: () => GboxClient,
+  Language: () => Language
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -121,6 +122,53 @@ var AndroidGbox = class {
   }
 };
 
+// src/type.ts
+var Language = /* @__PURE__ */ ((Language2) => {
+  Language2["PYTHON"] = "python";
+  Language2["JAVASCRIPT"] = "javascript";
+  return Language2;
+})(Language || {});
+
+// src/terminal.ts
+var TerminalGbox = class {
+  constructor(http, boxId) {
+    this.http = http;
+    this.sandboxId = boxId || null;
+    const init = async () => {
+      if (boxId) {
+        this.sandboxId = boxId;
+        return this;
+      } else {
+        const { data } = await this.http.post("/api/v1/gbox/terminal/create");
+        this.sandboxId = data.uid;
+        return this;
+      }
+    };
+    return init();
+  }
+  async runCode(code, language) {
+    if (!language) {
+      language = "python" /* PYTHON */;
+    }
+    if ("python" /* PYTHON */ !== language && "javascript" /* JAVASCRIPT */ !== language) {
+      throw new Error("Invalid language");
+    }
+    const { data } = await this.http.post("/api/v1/gbox/terminal/runCode", {
+      uid: this.sandboxId,
+      code,
+      language
+    });
+    return data.output;
+  }
+  async runCommand(command) {
+    const { data } = await this.http.post("/api/v1/gbox/terminal/run", {
+      uid: this.sandboxId,
+      command
+    });
+    return data.output;
+  }
+};
+
 // src/client.ts
 var defaultBaseUrl = "https://gboxes.app";
 var defaultApiKey = process.env.GBOX_API_KEY;
@@ -138,9 +186,14 @@ var GboxClient = class {
     const android = await new AndroidGbox(this.http, boxId);
     return android;
   }
+  async initTerminal(boxId) {
+    const terminal = await new TerminalGbox(this.http, boxId);
+    return terminal;
+  }
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  GboxClient
+  GboxClient,
+  Language
 });
 //# sourceMappingURL=index.cjs.map

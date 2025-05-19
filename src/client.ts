@@ -3,6 +3,7 @@
 import getHttp from './http';
 import AndroidGbox from './android';
 import { AxiosInstance } from 'axios';
+import { TerminalGbox } from './terminal';
 
 const defaultBaseUrl = 'https://gboxes.app';
 const defaultApiKey = process.env.GBOX_API_KEY;
@@ -30,5 +31,10 @@ export class GboxClient {
     async initAndroid(boxId?: string): Promise<AndroidGbox> {
         const android = await new AndroidGbox(this.http, boxId);
         return android;
+    }
+
+    async initTerminal(boxId?: string): Promise<TerminalGbox> {
+        const terminal = await new TerminalGbox(this.http, boxId);
+        return terminal;
     }
 }

@@ -77,6 +77,9 @@ await android.click(100, 100);
   - Scroll
   - Key Press Operations
   - Get Device Screen Dimensions
+- Terminal Sandbox Environment
+  - Run Code (Python, JavaScript)
+  - Run Shell Commands
 
 ## API Reference
 
@@ -97,19 +100,39 @@ new GboxClient(options?: GboxClientOptions)
 
 #### Methods
 
-##### initAndroid()
+##### initAndroid(boxId?: string)
 
 Initialize the Android sandbox environment.
 
 ```typescript
-async initAndroid(): Promise<AndroidGbox>
+async initAndroid(boxId?: string): Promise<AndroidGbox>
 ```
 
+**Parameters:**
+- `boxId` (optional): ID of an existing Android sandbox to connect to
+
 **Returns:** Returns an `AndroidGbox` instance for interacting with the Android sandbox.
+
+##### initTerminal(boxId?: string)
+
+Initialize the Terminal sandbox environment.
+
+```typescript
+async initTerminal(boxId?: string): Promise<TerminalGbox>
+```
+
+**Parameters:**
+- `boxId` (optional): ID of an existing Terminal sandbox to connect to
+
+**Returns:** Returns a `TerminalGbox` instance for interacting with the Terminal sandbox.
 
 ### AndroidGbox
 
 `AndroidGbox` provides methods for interacting with the Android sandbox environment.
+
+#### Properties
+
+- `sandboxId`: The ID of the Android sandbox instance
 
 #### Methods
 
@@ -160,7 +183,7 @@ async keypress(key: string): Promise<AndroidResponse>
 ```
 
 **Parameters:**
-- `key`: Name of the key to simulate
+- `key`: Name of the key to simulate (e.g., "enter", "delete", "back", "home", "space")
 
 **Returns:** Returns an operation result object.
 
@@ -173,23 +196,22 @@ async type(text: string): Promise<AndroidResponse>
 ```
 
 **Parameters:**
-- `text`: The text to input
+- `text`: The text to input (only supports English characters)
 
 **Returns:** Returns an operation result object.
 
-##### drag(options)
+##### drag(start, end, duration)
 
 Simulate a drag operation from start point to end point with specified duration.
 
 ```typescript
-async drag(options: { start: [number, number], end: [number, number], duration: number }): Promise<AndroidResponse>
+async drag(start: [number, number], end: [number, number], duration: number): Promise<AndroidResponse>
 ```
 
 **Parameters:**
-- `options`: Configuration object
-  - `start`: Starting point coordinates `[x, y]`
-  - `end`: End point coordinates `[x, y]`
-  - `duration`: Duration of the drag operation in milliseconds
+- `start`: Starting point coordinates `[x, y]`
+- `end`: End point coordinates `[x, y]`
+- `duration`: Duration of the drag operation in milliseconds
 
 **Returns:** Returns an operation result object.
 
@@ -201,7 +223,44 @@ Get the device screen dimensions.
 async getDeviceScreenSize(): Promise<[number, number]>
 ```
 
-**Returns:** Returns the device screen dimensions.
+**Returns:** Returns the device screen dimensions as `[width, height]`.
+
+### TerminalGbox
+
+`TerminalGbox` provides methods for interacting with the Terminal sandbox environment.
+
+#### Properties
+
+- `sandboxId`: The ID of the Terminal sandbox instance
+
+#### Methods
+
+##### runCode(code, language)
+
+Run code in the specified programming language.
+
+```typescript
+async runCode(code: string, language?: "python" | "javascript"): Promise<string>
+```
+
+**Parameters:**
+- `code`: The code to execute
+- `language` (optional): The programming language to use, default is "python"
+
+**Returns:** Returns the output of the executed code.
+
+##### runCommand(command)
+
+Run a shell command.
+
+```typescript
+async runCommand(command: string): Promise<string>
+```
+
+**Parameters:**
+- `command`: The shell command to execute
+
+**Returns:** Returns the output of the executed command.
 
 ## Development
 
