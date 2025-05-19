@@ -29,3 +29,7 @@ Enjoy your android simulator!
 - After drag
 
 ![After Drag](after_drag.png)
+
+### TODO
+- Google search E2E
+- Work with OpenAI computer use
