@@ -34,7 +34,7 @@ export class TerminalGbox {
             code,
             language,
         });
-        return data.output;
+        return data.stdout;
     }
 
     async runCommand(command: string): Promise<string> {
@@ -42,7 +42,7 @@ export class TerminalGbox {
             uid: this.sandboxId,
             command,
         });
-        return data.output;
+        return data.stdout;
     }
 
 

@@ -39,7 +39,7 @@ async function testTerminal() {
   const gbox = new GboxClient({
     apiKey: "gbox-HLz6wWS1CzuIeS6rEJHtAtyzDNDIUPBB2A2k0Yzo8NpRNcRgvk"
   });
-  const terminal = await gbox.initTerminal();
+  const terminal = await gbox.initTerminal("44164394-4d03-4643-bf7e-2d7624b4d755");
   
   const result = await terminal.runCode("print('Hello, World!')", );
   

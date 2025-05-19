@@ -158,14 +158,14 @@ var TerminalGbox = class {
       code,
       language
     });
-    return data.output;
+    return data.stdout;
   }
   async runCommand(command) {
     const { data } = await this.http.post("/api/v1/gbox/terminal/run", {
       uid: this.sandboxId,
       command
     });
-    return data.output;
+    return data.stdout;
   }
 };
 
