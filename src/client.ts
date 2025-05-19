@@ -27,8 +27,8 @@ export class GboxClient {
         this.http = getHttp(baseUrlValue, key);
     }
 
-    async initAndroid(): Promise<AndroidGbox> {
-        const android = await new AndroidGbox(this.http);
+    async initAndroid(boxId?: string): Promise<AndroidGbox> {
+        const android = await new AndroidGbox(this.http, boxId);
         return android;
     }
 }

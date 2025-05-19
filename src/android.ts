@@ -11,16 +11,19 @@ export default class AndroidGbox {
     private http: AxiosInstance;
     public sandboxId: string | null;
 
-    constructor(http: AxiosInstance) {
+    constructor(http: AxiosInstance, boxId?: string) {
         this.http = http;
-        this.sandboxId = null;
-
+        this.sandboxId = boxId || null;
         const init = async (): Promise<AndroidGbox> => {
-            const { data } = await this.http.post('/api/v1/gbox/android/create');
-            this.sandboxId = data.sandboxId;
-            return this;
+            if (boxId) {
+                this.sandboxId = boxId;
+                return this;
+            }else{
+                const { data } = await this.http.post('/api/v1/gbox/android/create');
+                this.sandboxId = data.uid;
+                return this;
+            }
         };
-
         return init() as unknown as AndroidGbox;
     }
 
@@ -28,7 +31,7 @@ export default class AndroidGbox {
         const { data } = await this.http.post(`/api/v1/gbox/android/screenshot`, {
             uid: this.sandboxId,
         });
-        return data.screenshot;
+        return data.url;
     }
 
     async click(x: number, y: number): Promise<AndroidResponse> {

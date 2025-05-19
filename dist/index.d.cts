@@ -9,11 +9,12 @@ type AndroidResponse = {
 declare class AndroidGbox {
     private http;
     sandboxId: string | null;
-    constructor(http: AxiosInstance);
+    constructor(http: AxiosInstance, boxId?: string);
     screenshot(): Promise<string>;
     click(x: number, y: number): Promise<AndroidResponse>;
     scroll(start: Point, end: Point): Promise<AndroidResponse>;
     keypress(key: string): Promise<AndroidResponse>;
+    getDeviceScreenSize(): Promise<Point>;
 }
 
 interface GboxClientOptions {
@@ -23,7 +24,7 @@ interface GboxClientOptions {
 declare class GboxClient {
     private http;
     constructor(options?: GboxClientOptions);
-    initAndroid(): Promise<AndroidGbox>;
+    initAndroid(boxId?: string): Promise<AndroidGbox>;
 }
 
 export { GboxClient };

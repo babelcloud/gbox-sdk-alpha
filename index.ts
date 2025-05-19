@@ -1,3 +1,1 @@
 export {GboxClient} from './src/client';
-
-
