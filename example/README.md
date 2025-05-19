@@ -15,3 +15,5 @@ export GBOX_API_KEY=xxx
 # Run the example
 node basic/android.ts
 ```
+Enjoy your android simulator!
+![Screenshot](screenshot.png)
