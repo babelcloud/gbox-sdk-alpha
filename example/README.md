@@ -15,5 +15,21 @@ export GBOX_API_KEY=xxx
 # Run the example
 node basic/android.ts
 ```
+
 Enjoy your android simulator!
-![Screenshot](screenshot.png)
+
+### Screenshot
+- Click and type text
+![Click and type](click_and_type.png)
+
+- Before drag
+
+![Before Drag](before_drag.png)
+
+- After drag
+
+![After Drag](after_drag.png)
+
+### TODO
+- Google search E2E
+- Work with OpenAI computer use
