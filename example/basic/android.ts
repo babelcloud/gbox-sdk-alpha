@@ -64,6 +64,7 @@ const screenshot = await android.screenshot();
 // You can save screenshot as PNG file
 const base64Data = screenshot.replace(/^data:image\/png;base64,/, '');
 fs.writeFileSync('screenshot.png', base64Data, 'base64');
+console.log("screenshot.png saved!")
 
 // Get screen dimensions, returns width*height
 const screenSize = await android.getDeviceScreenSize()
