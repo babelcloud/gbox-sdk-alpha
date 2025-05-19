@@ -15,5 +15,15 @@ export GBOX_API_KEY=xxx
 # Run the example
 node basic/android.ts
 ```
+
 Enjoy your android simulator!
-![Screenshot](screenshot.png)
+
+### Screenshot
+
+- Before drag
+
+![Before Drag](before_drag.png)
+
+- After drag
+
+![After Drag](after_drag.png)
