@@ -106,6 +106,12 @@ var AndroidGbox = class {
     });
     return data;
   }
+  async drag(start, end, duration) {
+    const [startX, startY] = start;
+    const [endX, endY] = end;
+    const { data } = await this.http.post(`/api/v1/gbox/android/drag`, { startX, startY, endX, endY, ms: duration, uid: this.sandboxId });
+    return data;
+  }
 };
 
 // src/client.ts
