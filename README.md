@@ -15,7 +15,6 @@ npm install gbox-sdk
 ```typescript
 import { GboxClient } from "gbox-sdk";
 
-
 const gbox = new GboxClient({
   apiKey: 'your api key',
 });
@@ -28,12 +27,11 @@ await android.click(100, 100);
 
 // Returns screenshot as base64 encoded string
 const screenshot = await android.screenshot();
-console.log(screenshot)
+//console.log(screenshot)
 
 // You can save screenshot as PNG file
 
 // import * as fs from 'fs';
-// const screenshot = await android.screenshot();
 // const base64Data = screenshot.replace(/^data:image\/png;base64,/, '');
 // fs.writeFileSync('screenshot.png', base64Data, 'base64');
 
