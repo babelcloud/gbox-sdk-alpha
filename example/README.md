@@ -1,8 +1,17 @@
 ## How to use
 
+### Step 1: Get your API Key
+1. Visit https://gboxes.app/api-keys
+2. Get your GBOX API KEY
+
+### Step 2: Run the example
 ```bash
+# Install dependencies
 npm i
-// Set up your GBOX API KEY, you can get it from https://gboxes.app/api-keys
+
+# Set up your GBOX API KEY
 export GBOX_API_KEY=xxx
+
+# Run the example
 node basic/android.ts
 ```
