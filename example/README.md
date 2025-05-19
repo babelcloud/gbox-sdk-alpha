@@ -6,6 +6,10 @@
 
 ### Step 2: Run the example
 ```bash
+git clone git@github.com:h8r-dev/gbox-sdk.git
+
+cd example
+
 # Install dependencies
 npm i
 
