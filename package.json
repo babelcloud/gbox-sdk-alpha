@@ -39,7 +39,8 @@
   "homepage": "https://github.com/h8r-dev/gbox-sdk#readme",
   "dependencies": {
     "axios": "^1.9.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "open": "^10.1.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.202",

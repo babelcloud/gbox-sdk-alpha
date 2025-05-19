@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "gbox-sdk": "^1.0.8"
+    "gbox-sdk": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.19"
