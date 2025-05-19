@@ -19,6 +19,8 @@ node basic/android.ts
 Enjoy your android simulator!
 
 ### Screenshot
+- Click and type text
+![Click and type](click_and_type.png)
 
 - Before drag
 
