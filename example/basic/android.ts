@@ -5,6 +5,8 @@ const gbox = new GboxClient();
 
 // Initialize Android box (default lifecycle: 5 minutes, will be automatically released after 5 minutes)
 const android = await gbox.initAndroid();
+// Or you can use an existing simulator directly
+//const android = await gbox.initAndroid("dfe314f1-8a18-40d6-b444-5b329f1cb138")
 console.log(android.sandboxId)
 
 // Click at specified X Y position
