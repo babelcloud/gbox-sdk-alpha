@@ -8,7 +8,7 @@
 ```bash
 git clone git@github.com:h8r-dev/gbox-sdk.git
 
-cd example
+cd ./gbox-sdk/example
 
 # Install dependencies
 npm i
