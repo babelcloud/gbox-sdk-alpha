@@ -30,7 +30,7 @@ export default class AndroidGbox {
                 return this;
             }else{
                 const { data } = await this.http.post('/api/v1/gbox/android/create', {
-                    arch: this.arch,
+                    architecture: this.arch,
                 });
                 this.sandboxId = data.uid;
                 return this;
