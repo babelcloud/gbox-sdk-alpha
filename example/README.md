@@ -31,6 +31,7 @@ cd example && npm run start
 # WIP: Run the broswer gbox
 # node basic/broswer.ts
 ```
+Then, you will see the Android interface automatically simulate E2E testing, such as clicking, typing, and searching operations.
 
 Enjoy your android simulator!
 
