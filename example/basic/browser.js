@@ -1,16 +1,12 @@
 // WIP: Our next plan
-import dotenv from 'dotenv';    
+import dotenv from 'dotenv';
 import { GboxClient, Language } from "gbox-sdk";
-
 dotenv.config();
-
 const gbox = new GboxClient();
 const terminal = await gbox.initTerminal();
-
 // Install playwright package
 const installRes = await terminal.runCommand("pip install playwright && playwright install");
 console.log("Install result:", installRes);
-
 const pythonScript = `
 from playwright.sync_api import sync_playwright
 
@@ -30,6 +26,5 @@ def run_test():
 if __name__ == "__main__":
     run_test()
 `;
-
 const runCodeRes = await terminal.runCode(pythonScript, Language.PYTHON);
 console.log(runCodeRes);

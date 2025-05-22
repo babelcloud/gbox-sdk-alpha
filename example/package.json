@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:android": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node basic/android.ts",
-    "start:terminal": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node basic/terminal.ts"
+    "start:android": "node basic/android.js",
+    "start:terminal": "node basic/terminal.js"
   },
   "keywords": [],
   "author": "",
