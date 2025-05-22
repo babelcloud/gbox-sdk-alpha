@@ -33,8 +33,6 @@ npm run start:android
 # Run the terminal gbox
 npm run start:terminal
 
-# WIP: Run the broswer gbox
-npm run start:browser
 ```
 Then, you will see the Android interface automatically simulate E2E testing, such as clicking, typing, and searching operations.
 
