@@ -27,7 +27,7 @@ const gbox = new GboxClient({
 // Initialize Android box (default lifecycle: 5 minutes, will be automatically released after 5 minutes)
 const android = await gbox.initAndroid();
 // Or you can use an existing simulator directly
-//const android = await gbox.initAndroid("2f85cd9e-b314-45f3-ab13-5bcc57dacaf2")
+//const android = await gbox.initAndroid({ boxId: "2f85cd9e-b314-45f3-ab13-5bcc57dacaf2" })
 console.log(android.sandboxId)
 
 // Click at specified X Y position
@@ -100,29 +100,32 @@ new GboxClient(options?: GboxClientOptions)
 
 #### Methods
 
-##### initAndroid(boxId?: string)
+##### initAndroid(options?: initAndroidOptions)
 
 Initialize the Android sandbox environment.
 
 ```typescript
-async initAndroid(boxId?: string): Promise<AndroidGbox>
+async initAndroid(options?: initAndroidOptions): Promise<AndroidGbox>
 ```
 
 **Parameters:**
-- `boxId` (optional): ID of an existing Android sandbox to connect to
+- `options` (optional): Configuration object
+  - `boxId` (optional): ID of an existing Android sandbox to connect to
+  - `arch` (optional): Architecture type
 
 **Returns:** Returns an `AndroidGbox` instance for interacting with the Android sandbox.
 
-##### initTerminal(boxId?: string)
+##### initTerminal(options?: initTerminalOptions)
 
 Initialize the Terminal sandbox environment.
 
 ```typescript
-async initTerminal(boxId?: string): Promise<TerminalGbox>
+async initTerminal(options?: initTerminalOptions): Promise<TerminalGbox>
 ```
 
 **Parameters:**
-- `boxId` (optional): ID of an existing Terminal sandbox to connect to
+- `options` (optional): Configuration object
+  - `boxId` (optional): ID of an existing Terminal sandbox to connect to
 
 **Returns:** Returns a `TerminalGbox` instance for interacting with the Terminal sandbox.
 

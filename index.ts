@@ -1,2 +1,2 @@
 export {GboxClient} from './src/client';
-export {Language} from './src/type';
+export {Language, Architecture} from './src/type';

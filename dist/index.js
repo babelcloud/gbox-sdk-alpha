@@ -11,8 +11,8 @@ function getHttp(baseURL, apiKey) {
   http.interceptors.response.use(
     (response) => response,
     (error) => {
-      const errorMessage = error.response ? `\u8BF7\u6C42\u9519\u8BEF: ${error.response.status} ${error.response.statusText} - ${JSON.stringify(error.response.data)}` : error.request ? "\u8BF7\u6C42\u5DF2\u53D1\u9001\u4F46\u672A\u6536\u5230\u54CD\u5E94" : `\u8BF7\u6C42\u914D\u7F6E\u9519\u8BEF: ${error.message}`;
-      console.error("HTTP\u9519\u8BEF:", errorMessage);
+      const errorMessage = error.response ? `Request error: ${error.response.status} ${error.response.statusText} - ${JSON.stringify(error.response.data)}` : error.request ? "Request sent but no response received" : `Request configuration error: ${error.message}`;
+      console.error("HTTP error:", errorMessage);
       return Promise.reject(errorMessage);
     }
   );
@@ -20,17 +20,40 @@ function getHttp(baseURL, apiKey) {
 }
 var http_default = getHttp;
 
+// src/type.ts
+var Language = /* @__PURE__ */ ((Language2) => {
+  Language2["PYTHON"] = "python";
+  Language2["JAVASCRIPT"] = "javascript";
+  return Language2;
+})(Language || {});
+var Architecture = /* @__PURE__ */ ((Architecture2) => {
+  Architecture2["ARM64"] = "arm64";
+  Architecture2["X86"] = "x86";
+  return Architecture2;
+})(Architecture || {});
+
 // src/android.ts
 var AndroidGbox = class {
-  constructor(http, boxId) {
+  constructor(http, boxId, arch) {
     this.http = http;
     this.sandboxId = boxId || null;
+    if (arch) {
+      if (Object.values(Architecture).includes(arch)) {
+        this.arch = arch;
+      } else {
+        throw new Error(`Invalid architecture type: ${arch}. Should be one of the values in the Architecture enum.`);
+      }
+    } else {
+      this.arch = "arm64" /* ARM64 */;
+    }
     const init = async () => {
       if (boxId) {
         this.sandboxId = boxId;
         return this;
       } else {
-        const { data } = await this.http.post("/api/v1/gbox/android/create");
+        const { data } = await this.http.post("/api/v1/gbox/android/create", {
+          arch: this.arch
+        });
         this.sandboxId = data.uid;
         return this;
       }
@@ -85,13 +108,6 @@ var AndroidGbox = class {
   }
 };
 
-// src/type.ts
-var Language = /* @__PURE__ */ ((Language2) => {
-  Language2["PYTHON"] = "python";
-  Language2["JAVASCRIPT"] = "javascript";
-  return Language2;
-})(Language || {});
-
 // src/terminal.ts
 var TerminalGbox = class {
   constructor(http, boxId) {
@@ -145,16 +161,19 @@ var GboxClient = class {
     const baseUrlValue = options.baseUrl || envBaseUrl || defaultBaseUrl;
     this.http = http_default(baseUrlValue, key);
   }
-  async initAndroid(boxId) {
-    const android = await new AndroidGbox(this.http, boxId);
+  async initAndroid(options) {
+    const { boxId, arch } = options || {};
+    const android = await new AndroidGbox(this.http, boxId, arch);
     return android;
   }
-  async initTerminal(boxId) {
+  async initTerminal(options) {
+    const { boxId } = options || {};
     const terminal = await new TerminalGbox(this.http, boxId);
     return terminal;
   }
 };
 export {
+  Architecture,
   GboxClient,
   Language
 };

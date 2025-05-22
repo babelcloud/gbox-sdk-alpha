@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-
+import { Architecture } from './type';
 type Point = [number, number];
 type AndroidResponse = {
     sandboxId?: string;
@@ -10,16 +10,28 @@ type AndroidResponse = {
 export default class AndroidGbox {
     private http: AxiosInstance;
     public sandboxId: string | null;
+    public arch: Architecture;
 
-    constructor(http: AxiosInstance, boxId?: string) {
+    constructor(http: AxiosInstance, boxId?: string, arch?: Architecture) {
         this.http = http;
         this.sandboxId = boxId || null;
+        if(arch) {
+            if (Object.values(Architecture).includes(arch)) {
+                this.arch = arch;
+            } else {
+                throw new Error(`Invalid architecture type: ${arch}. Should be one of the values in the Architecture enum.`);
+            }
+        }else{
+            this.arch = Architecture.ARM64;
+        }
         const init = async (): Promise<AndroidGbox> => {
             if (boxId) {
                 this.sandboxId = boxId;
                 return this;
             }else{
-                const { data } = await this.http.post('/api/v1/gbox/android/create');
+                const { data } = await this.http.post('/api/v1/gbox/android/create', {
+                    arch: this.arch,
+                });
                 this.sandboxId = data.uid;
                 return this;
             }

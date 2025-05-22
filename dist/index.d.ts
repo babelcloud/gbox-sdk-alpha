@@ -1,5 +1,14 @@
 import { AxiosInstance } from 'axios';
 
+declare enum Language {
+    PYTHON = "python",
+    JAVASCRIPT = "javascript"
+}
+declare enum Architecture {
+    ARM64 = "arm64",
+    X86 = "x86"
+}
+
 type Point = [number, number];
 type AndroidResponse = {
     sandboxId?: string;
@@ -9,7 +18,8 @@ type AndroidResponse = {
 declare class AndroidGbox {
     private http;
     sandboxId: string | null;
-    constructor(http: AxiosInstance, boxId?: string);
+    arch: Architecture;
+    constructor(http: AxiosInstance, boxId?: string, arch?: Architecture);
     screenshot(): Promise<string>;
     click(x: number, y: number): Promise<AndroidResponse>;
     scroll(start: Point, end: Point): Promise<AndroidResponse>;
@@ -17,11 +27,6 @@ declare class AndroidGbox {
     type(text: string): Promise<AndroidResponse>;
     getDeviceScreenSize(): Promise<Point>;
     drag(start: Point, end: Point, duration: number): Promise<AndroidResponse>;
-}
-
-declare enum Language {
-    PYTHON = "python",
-    JAVASCRIPT = "javascript"
 }
 
 declare class TerminalGbox {
@@ -36,11 +41,18 @@ interface GboxClientOptions {
     apiKey?: string;
     baseUrl?: string;
 }
+interface initAndroidOptions {
+    boxId?: string;
+    arch?: Architecture;
+}
+interface initTerminalOptions {
+    boxId?: string;
+}
 declare class GboxClient {
     private http;
     constructor(options?: GboxClientOptions);
-    initAndroid(boxId?: string): Promise<AndroidGbox>;
-    initTerminal(boxId?: string): Promise<TerminalGbox>;
+    initAndroid(options?: initAndroidOptions): Promise<AndroidGbox>;
+    initTerminal(options?: initTerminalOptions): Promise<TerminalGbox>;
 }
 
-export { GboxClient, Language };
+export { Architecture, GboxClient, Language };
