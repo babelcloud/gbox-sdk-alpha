@@ -6,7 +6,9 @@
 
 ### Step 2: Run the example
 ```bash
-git clone git@github.com:h8r-dev/gbox-example.git
+git clone git@github.com:babelcloud/gbox-sdk-alpha.git
+
+cd gbox-sdk-alpha
 
 # Install dependencies
 npm i
@@ -14,8 +16,8 @@ npm i
 # Set up your GBOX API KEY
 export GBOX_API_KEY=xxx
 
-# Run the android gbox
-node basic/android.ts
+# Run the android gbox example
+cd example && npm run start
 
 # Run the terminal gbox
 # node basic/terminal.ts
