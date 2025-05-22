@@ -6,22 +6,22 @@
 
 ### Step 2: Run the example
 ```bash
-git clone git@github.com:h8r-dev/gbox-example.git
+git clone git@github.com:babelcloud/gbox-sdk-alpha.git
 
 # Install dependencies
-npm i
+cd example & npm i
 
-# Set up your GBOX API KEY
-export GBOX_API_KEY=xxx
+# Update up your GBOX API KEY on .env file
+GBOX_API_KEY=xxxxx
 
 # Run the android gbox
-node basic/android.ts
+npm run start:android
 
 # Run the terminal gbox
-# node basic/terminal.ts
+npm run start:terminal
 
 # WIP: Run the broswer gbox
-# node basic/broswer.ts
+npm run start:browser
 ```
 
 Enjoy your android simulator!

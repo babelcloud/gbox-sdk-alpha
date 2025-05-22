@@ -4,6 +4,9 @@ import * as path from 'path';
 import { OpenAI } from 'openai';
 import * as readline from 'readline';
 import open from 'open';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Initialize OpenAI client
 const client = new OpenAI();

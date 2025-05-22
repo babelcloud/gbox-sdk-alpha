@@ -1,4 +1,7 @@
 import { GboxClient, Language } from "gbox-sdk";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const gbox = new GboxClient();
 const terminal = await gbox.initTerminal();

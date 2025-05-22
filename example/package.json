@@ -4,20 +4,23 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_OPTIONS=\"--loader ts-node/esm\" node basic/android.ts"
+    "start:android": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node basic/android.ts",
+    "start:browser": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node basic/broswer.ts",
+    "start:terminal": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node basic/terminal.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "gbox-sdk": "^1.2.5",
     "open": "^10.1.2",
     "openai": "^4.100.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.19",
+    "cross-env": "^7.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
