@@ -3,7 +3,7 @@
 GBox SDK is a TypeScript/JavaScript client library for interacting with GBox services.
 
 ## Example
-You can run the examples in the [example](https://github.com/h8r-dev/gbox-sdk/tree/main/example) directory.
+You can run the examples in the [example](https://github.com/babelcloud/gbox-sdk-alpha/tree/main/example) directory.
 
 ## Installation
 
