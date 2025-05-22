@@ -1,3 +1,5 @@
+> :warning: **Warning:** This is a demo purpose SDK to work with https://alpha.gbox.cloud. This SDK will be deprecated once the official [gbox SDK](https://github.com/babelcloud/gbox) enables gbox.cloud.
+
 ## Prerequisites
 
 Before running the examples, make sure you have the following installed:
