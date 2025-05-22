@@ -17,22 +17,13 @@ Before running the examples, make sure you have the following installed:
 git clone git@github.com:babelcloud/gbox-sdk-alpha.git
 
 # Install dependencies
-<<<<<<< HEAD
-cd example & npm i
-=======
-cd gbox-sdk-alpha && npm i
->>>>>>> ef96527751f1f7780e90348bc157eb439898a61c
+cd gbox-sdk-alpha && cd example && npm i
 
 # Update up your GBOX API KEY on .env file
 GBOX_API_KEY=xxxxx
 
-<<<<<<< HEAD
-# Run the android gbox
-npm run start:android
-=======
 # Run the android gbox example
-cd example && npm run start
->>>>>>> ef96527751f1f7780e90348bc157eb439898a61c
+npm run start:android
 
 # Run the terminal gbox
 npm run start:terminal
