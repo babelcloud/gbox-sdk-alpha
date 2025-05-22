@@ -29,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/h8r-dev/gbox-sdk.git"
+    "url": "git+https://github.com/babelcloud/gbox-sdk-alpha.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/h8r-dev/gbox-sdk/issues"
+    "url": "https://github.com/babelcloud/gbox-sdk-alpha/issues"
   },
-  "homepage": "https://github.com/h8r-dev/gbox-sdk#readme",
+  "homepage": "https://github.com/babelcloud/gbox-sdk-alpha#readme",
   "dependencies": {
     "axios": "^1.9.0",
     "lodash": "^4.17.21",

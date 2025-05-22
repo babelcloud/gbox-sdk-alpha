@@ -171,10 +171,10 @@ var TerminalGbox = class {
 
 // src/client.ts
 var defaultBaseUrl = "https://alpha.gbox.cloud";
-var defaultApiKey = process.env.GBOX_API_KEY;
-var envBaseUrl = process.env.GBOX_BASE_URL;
 var GboxClient = class {
   constructor(options = {}) {
+    const defaultApiKey = process.env.GBOX_API_KEY;
+    const envBaseUrl = process.env.GBOX_BASE_URL;
     const key = options.apiKey || defaultApiKey;
     if (!key) {
       throw new Error("GBOX_API_KEY is not set on environment variables");

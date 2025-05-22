@@ -6,8 +6,6 @@ import { AxiosInstance } from 'axios';
 import { TerminalGbox } from './terminal';
 
 const defaultBaseUrl = 'https://alpha.gbox.cloud';
-const defaultApiKey = process.env.GBOX_API_KEY;
-const envBaseUrl = process.env.GBOX_BASE_URL;
 
 interface GboxClientOptions {
     apiKey?: string;
@@ -17,6 +15,8 @@ interface GboxClientOptions {
 export class GboxClient {
     private http: AxiosInstance;
     constructor(options: GboxClientOptions = {}) {
+        const defaultApiKey = process.env.GBOX_API_KEY;
+        const envBaseUrl = process.env.GBOX_BASE_URL;
         const key = options.apiKey || defaultApiKey;
 
         if (!key) {
