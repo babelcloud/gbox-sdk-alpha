@@ -1,6 +1,6 @@
 {
   "name": "gbox-sdk",
-  "description": "",
+  "description": "A TypeScript/JavaScript client library for interacting with GBox sandbox services, enabling Android and Terminal environment operations.",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -27,16 +27,27 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit"
   },
+  "keywords": [
+    "gbox",
+    "android",
+    "automation",
+    "sandbox",
+    "terminal",
+    "emulator"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/babelcloud/gbox-sdk-alpha.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "BabelCloud",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/babelcloud/gbox-sdk-alpha/issues"
   },
   "homepage": "https://github.com/babelcloud/gbox-sdk-alpha#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "dependencies": {
     "axios": "^1.9.0",
     "lodash": "^4.17.21",
