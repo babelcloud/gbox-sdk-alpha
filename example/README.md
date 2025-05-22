@@ -1,7 +1,7 @@
 ## How to use
 
 ### Step 1: Get your API Key
-1. Visit https://gboxes.app/api-keys
+1. Visit https://alpha.gbox.cloud/api-keys
 2. Get your GBOX API KEY
 
 ### Step 2: Run the example

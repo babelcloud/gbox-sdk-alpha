@@ -26,7 +26,7 @@ await new Promise<void>((resolve) => {
 });
 
 // Construct URL with dynamic sandboxId
-const url = `https://gboxes.app/api/v1/proxy/${android.sandboxId}/#!action=stream&udid=localhost:5555&player=mse&ws=wss%3A%2F%2Fgboxes.app%2Fapi%2Fv1%2Fproxy%2F${android.sandboxId}%2F%3Faction%3Dproxy-adb%26remote%3Dtcp%253A8886%26udid%3Dlocalhost%253A5555`;
+const url = `https://alpha.gbox.cloud/api/v1/proxy/${android.sandboxId}/#!action=stream&udid=localhost:5555&player=mse&ws=wss%3A%2F%2Falpha.gbox.cloud%2Fapi%2Fv1%2Fproxy%2F${android.sandboxId}%2F%3Faction%3Dproxy-adb%26remote%3Dtcp%253A8886%26udid%3Dlocalhost%253A5555`;
 
 // Open browser
 await open(url);

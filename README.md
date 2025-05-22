@@ -96,7 +96,7 @@ new GboxClient(options?: GboxClientOptions)
 **Parameters:**
 - `options` (optional): Configuration object
   - `apiKey`: API key, if not provided will be retrieved from environment variable `GBOX_API_KEY`
-  - `baseUrl`: Custom API base URL, defaults to 'https://gboxes.app'
+  - `baseUrl`: Custom API base URL, defaults to 'https://alpha.gbox.cloud'
 
 #### Methods
 
