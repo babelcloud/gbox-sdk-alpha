@@ -1,3 +1,11 @@
+## Prerequisites
+
+Before running the examples, make sure you have the following installed:
+
+- Node.js >= 16.0.0 (LTS version recommended)
+- npm (comes with Node.js)
+- Git
+
 ## How to use
 
 ### Step 1: Get your API Key
