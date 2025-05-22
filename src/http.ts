@@ -14,12 +14,12 @@ function getHttp(baseURL: string, apiKey: string): AxiosInstance {
         response => response,
         error => {
             const errorMessage = error.response
-                ? `请求错误: ${error.response.status} ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
+                ? `Request error: ${error.response.status} ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
                 : error.request
-                    ? '请求已发送但未收到响应'
-                    : `请求配置错误: ${error.message}`;
+                    ? 'Request sent but no response received'
+                    : `Request configuration error: ${error.message}`;
             
-            console.error('HTTP错误:', errorMessage);
+            console.error('HTTP error:', errorMessage);
             
             return Promise.reject(errorMessage);
         }

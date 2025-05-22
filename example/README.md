@@ -17,10 +17,15 @@ Before running the examples, make sure you have the following installed:
 git clone git@github.com:babelcloud/gbox-sdk-alpha.git
 
 # Install dependencies
-cd gbox-sdk-alpha && cd example && npm i
+cd gbox-sdk-alpha & cd example & npm i
 
 # Update up your GBOX API KEY on .env file
-GBOX_API_KEY=xxxxx
+# mac/linux: 
+echo "GBOX_API_KEY=your_key_here" >> .env
+# win(cmd): 
+echo GBOX_API_KEY=your_key_here >> .env
+# win(powershell)
+Add-Content -Path .env -Value "GBOX_API_KEY=your_key_here"
 
 # Run the android gbox example
 npm run start:android

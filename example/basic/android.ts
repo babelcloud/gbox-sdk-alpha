@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';    
 import { GboxClient } from "gbox-sdk";
 import * as fs from 'fs';
 import * as readline from 'readline';
 import open from 'open';
+import dotenv from 'dotenv';  
 
 dotenv.config();
 
