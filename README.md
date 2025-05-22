@@ -40,15 +40,15 @@ Enjoy your android simulator!
 
 ### Screenshot
 - Click and type text
-![Click and type](./screenshot/click_and_type.png)
+![Click and type](./example/screenshot/click_and_type.png)
 
 - Before drag
 
-![Before Drag](./screenshot/before_drag.png)
+![Before Drag](./example/screenshot/before_drag.png)
 
 - After drag
 
-![After Drag](./screenshot/after_drag.png)
+![After Drag](./example/screenshot/after_drag.png)
 
 
 ### TODO
