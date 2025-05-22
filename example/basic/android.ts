@@ -19,7 +19,7 @@ const rl = readline.createInterface({
 
 // Prompt user and wait for enter key
 await new Promise<void>((resolve) => {
-    rl.question('Press enter to open browser and view real-time operations: [enter]?', () => {
+    rl.question('Press enter to open browser and view Android E2E test: [enter]?', () => {
         rl.close();
         resolve();
     });
@@ -32,8 +32,8 @@ const url = `https://alpha.gbox.cloud/api/v1/proxy/${android.sandboxId}/#!action
 await open(url);
 
 // Wait for 5 seconds to let user see the effect
-console.log('Waiting 5 seconds before continuing...');
-await new Promise(resolve => setTimeout(resolve, 5000));
+console.log('Waiting 3 seconds before continuing...');
+await new Promise(resolve => setTimeout(resolve, 3000));
 
 // Keypress: support type: enter, delete, back, home, space, up, down, left, right, menu
 // Return to home and press back to ensure we can click the Google search input
@@ -58,8 +58,8 @@ await android.keypress("enter");
 // Returns screenshot as base64 encoded string
 const screenshot = await android.screenshot();
 
-// wait for 3 sec
-await new Promise(resolve => setTimeout(resolve, 3000));
+// wait for 2 sec
+await new Promise(resolve => setTimeout(resolve, 2000));
 
 // You can save screenshot as PNG file
 const base64Data = screenshot.replace(/^data:image\/png;base64,/, '');

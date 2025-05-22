@@ -12,7 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "gbox-sdk": "^1.2.4",
+    "gbox-sdk": "^1.2.5",
     "open": "^10.1.2",
     "openai": "^4.100.0"
   },
