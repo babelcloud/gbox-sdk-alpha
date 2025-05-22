@@ -17,7 +17,7 @@ Before running the examples, make sure you have the following installed:
 git clone git@github.com:babelcloud/gbox-sdk-alpha.git
 
 # Install dependencies
-cd gbox-sdk-alpha & cd example & npm i
+cd gbox-sdk-alpha/example & npm i
 
 # Update up your GBOX API KEY on .env file
 # mac/linux: 
