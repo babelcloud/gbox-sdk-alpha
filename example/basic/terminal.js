@@ -12,9 +12,8 @@ import requests
 def print_gbox():
     print("Welcome to Gbox Cloud!")
     
-    # Make a simple request to get current time
-    response = requests.get("https://google.com")
-    print("Status Code:", response.status_code)
+    response = requests.get("https://alpha.gbox.cloud/")
+    print(response.text.split("<title>")[1].split("</title>")[0])
 
 print_gbox()
 `;
