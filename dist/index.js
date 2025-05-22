@@ -133,7 +133,7 @@ var TerminalGbox = class {
 };
 
 // src/client.ts
-var defaultBaseUrl = "https://gboxes.app";
+var defaultBaseUrl = "https://alpha.gbox.cloud";
 var defaultApiKey = process.env.GBOX_API_KEY;
 var envBaseUrl = process.env.GBOX_BASE_URL;
 var GboxClient = class {
