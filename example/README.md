@@ -8,10 +8,8 @@
 ```bash
 git clone git@github.com:babelcloud/gbox-sdk-alpha.git
 
-cd gbox-sdk-alpha
-
 # Install dependencies
-npm i
+cd gbox-sdk-alpha && npm i
 
 # Set up your GBOX API KEY
 export GBOX_API_KEY=xxx
