@@ -22,7 +22,7 @@ export default class AndroidGbox {
                 throw new Error(`Invalid architecture type: ${arch}. Should be one of the values in the Architecture enum.`);
             }
         }else{
-            this.arch = Architecture.ARM64;
+            this.arch = Architecture.X86;
         }
         const init = async (): Promise<AndroidGbox> => {
             if (boxId) {
