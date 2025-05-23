@@ -82,7 +82,7 @@ var AndroidGbox = class {
         throw new Error(`Invalid architecture type: ${arch}. Should be one of the values in the Architecture enum.`);
       }
     } else {
-      this.arch = "arm64" /* ARM64 */;
+      this.arch = "x86" /* X86 */;
     }
     const init = async () => {
       if (boxId) {
@@ -90,7 +90,7 @@ var AndroidGbox = class {
         return this;
       } else {
         const { data } = await this.http.post("/api/v1/gbox/android/create", {
-          arch: this.arch
+          architecture: this.arch
         });
         this.sandboxId = data.uid;
         return this;
